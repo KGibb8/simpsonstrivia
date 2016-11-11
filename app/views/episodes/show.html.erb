@@ -1,0 +1,28 @@
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: rgba(0,0,0,0.75);
+}
+h1 {
+  font-size: 3em;
+}
+p {
+  font-size: 2em;
+}
+#epImg {
+}
+</style>
+
+<h1><%= @episode.title %></h1>
+<p>First aired: <%= @episode.original_air_date %></p>
+<p>Episode Number: <%= @episode.number_in_series %> -- S<%= @episode.season %>E<%= @episode.number_in_season %></p>
+<p>US Views in Millions: <%= @episode.us_viewers_in_millions %></p>
+<p>IMDB Rating: <%= @episode.imdb_rating %></p>
+<p>IMDB Votes: <%= @episode.imdb_votes %></p>
+<div id="epImg">
+  <%= image_tag(@episode.image_url) %>
+</div>

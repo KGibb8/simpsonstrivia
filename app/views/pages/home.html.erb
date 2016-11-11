@@ -1,0 +1,121 @@
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: white;
+  background-color: rgba(0,0,0,0.75);
+}
+.image {
+  display: inline-block;
+  width: 25%;
+  margin-left: -4px;
+  margin-top: -6px;
+}
+
+.background_image {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: inline-block;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.right-side-bar {
+  position: fixed;
+  top: 7.5%;
+  right: 5%;
+  width: 25%;
+  height: 85%;
+  background-color: rgba(0,0,0,0.75);
+}
+
+.left-side-bar {
+  position: fixed;
+  top: 7.5%;
+  left: 5%;
+  width: 25%;
+  height: 85%;
+  background-color: rgba(0,0,0,0.75);
+}
+
+textarea {
+  width: 90%;
+  height: 120px;
+  font-size: 5em;
+  background-color: rgba(0,0,0,0.75);
+  color: white;
+}
+
+.main {
+  position: absolute;
+  z-index: 1;
+  top: 5%;
+  left: 5%;
+  height: 3300px;
+  width: 90%;
+  background-color: rgba(0,0,0,0.75);
+}
+
+.chart {
+  position: absolute;
+  z-index: 1;
+}
+header {
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+#searchResults {
+  display: inline-block;
+}
+.result {
+  display: inline-block;
+  margin: 1em;
+}
+
+.resultImg {
+  border-radius: 1em;
+  height: 200px;
+  width: 300px;
+}
+</style>
+
+<div class="background">
+  <div class="main">
+    <header>
+      <%= image_tag('header.png') %>
+    </header>
+    <h2>Enter your favourite Simpsons quote:</h2>
+    <%= text_area_tag "searchBar" %>
+    <div id="searchResults">
+    </div>
+  </div>
+  <% @urls.each do |url| %>
+    <div class="image">
+      <%= image_tag(url, class: "background_image") %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+$(function () {
+  $("#searchBar").on("keydown", function (e) {
+    if (e.key == "Backspace") {
+      $('#searchResults').empty();
+    }
+    if (e.key.length == 1) {
+      App.search.search({
+        query: this.value + e.key
+      });
+    }
+  });
+});
+</script>
+
