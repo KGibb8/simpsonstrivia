@@ -57,6 +57,20 @@ Location.transaction do
   end
 end
 
+# # Download all images for episodes, needs tweaking!
+# Episode.all.each do |episode|
+#   unless episode.image_url.to_i != 0
+#     open(episode.image_url) do |f|
+#       File.open("./app/asset/images/episodes/episode_#{episode.episode_id}.jpg", "wb") do |file|
+#         file.puts f.read
+#         path = file.path.match(/(images/episodes/episode_#{episode.episode_id}.jpg)/)[1]
+#         episode.update(image_url: path)
+#       end
+#     end
+#   end
+# end
+
+
 puts ""
 puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locations loaded ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
